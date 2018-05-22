@@ -13,6 +13,18 @@ def homepage():
     <img src="http://loremflickr.com/600/400" />
     """.format(time=the_time)
 
+@app.errorhandler(404)
+def page_not_found(e):
+    template = '''{  extends "layout.html"  }
+{  block body  }
+    <div class="center-content error">
+        <h1>Oops! That page doesn't exist.</h1>
+        <h3>%s</h3>
+    </div>
+{  endblock  }
+''' % (request.url)
+    return render_template_string(template), 404
+
 if __name__ == '__main__':
     app.run(debug=True, use_reloader=True)
 
