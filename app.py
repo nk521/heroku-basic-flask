@@ -2,7 +2,7 @@ from flask import Flask, request, render_template_string, render_template
 
 app = Flask(__name__)
 
-@app.route('/hello-template-injection')
+@app.route('/')
 def hello_ssti():
 	person = {'name':"null", 'secret':"nullctf{}"}
 	if request.args.get('name'):
